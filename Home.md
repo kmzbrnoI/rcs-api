@@ -22,6 +22,24 @@ The library has windows, however, it is fully operable withnout using them.
  * MTB-USB driver (available in project releases). Driver is custom FTDI driver,
    installation from unknown sources is required to install this driver.
 
+## Short intro to MTB
+
+ * MTB is a RS485-based bus which consists of a single master (called MTB-USB)
+   and multiple slaves.
+ * There are several types of slaves, each has different deatures:
+  - MTB-UNI
+  - MTB-UNIm
+  - MTB-TTL
+  - MTB-REG
+  - MTB-POT
+ * Most common modules are MTB-UNI and MTB-TTL.
+  - Both of these modules have 16 digital inputs and 16 digital outputs.
+ * This library supports only MTB-UNI, MTB-UNIm and MTB-TTL.
+ * This library allows user to detect states of inputs and set states of outputs.
+ * Each board has its unique address.
+ * There are 16 input and 16 output ports on each of MTB-UNI, MTB-UNIm and
+   MTB-TLL boars, there pins are indexed 0-15.
+
 ## Sample workflow
 
  1.  Connect MTB-USB board via USB.
