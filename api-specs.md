@@ -275,7 +275,7 @@ TODO: bounds (mtb addrs, ports)
    This pointer is forwarded into callback function as its parameter.
  * Calling `BindBeforeOpen(nil, nil)` disables callback.
 
-```delphi
+```pascal
 TStdNotifyEvent = procedure (Sender: TObject; data:Pointer); stdcall;
 TStdLogEvent = procedure (Sender: TObject; data:Pointer; msg:PChar); stdcall;
 TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: word; errAddr: byte; errMsg:PChar); stdcall;
