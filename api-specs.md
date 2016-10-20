@@ -5,7 +5,27 @@ Error codes are available [here](error-codes).
 All functions and procedures are called by `stdcall`.
 
 ##### `function LoadConfig(filename:PChar):Integer`
+
+ * Loads library configuration from file `filename`.
+ * This function could only be called when device is *closed*.
+ * Returns 0 by default.
+ * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
+ * Returns `MTB_FILE_DEVICE_OPENED` when trying to load confugration with opened
+   device.
+ * Old configuration is kept when cannot access file.
+
+
 ##### `function SaveConfig(filename:PChar):Integer`
+
+ * Saves current library configuration to file `filename`
+ * When `filename` is empty string, configuration is saved to default
+   location (`./mtb/data/mtbcfg.ini`)
+ * This function can save configuration to another location, however, at the
+   next boot, `./mtb/data/mtbcfg.ini` will be loaded.
+ * Returns 0 by default.
+ * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
+ * This function could be called at any time.
+
 
 ##### `procedure SetLogWrite(state:boolean)`
 ##### `procedure SetDataInWrite(state:boolean)`
