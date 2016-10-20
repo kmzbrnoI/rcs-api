@@ -161,9 +161,7 @@ TODO: bounds (mtb addrs, ports)
 
  * This function returns input state of port `port` on mtb module `module`.
  * Returns 0/1 by default.
- * Returns `MTB_MODULE_INVALID_ADDR` when invalid module address is passed
-   (out of range).
- * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` was not found on bus.
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
@@ -173,9 +171,7 @@ TODO: bounds (mtb addrs, ports)
  * Returns state of output pin `port` on module `module`.
  * Returns 0-255 by default (higher numbers for scom), 0-1 for MTB-UNI and
    MTB-TTL.
- * Returns `MTB_MODULE_INVALID_ADDR` when invalid module address is passed
-   (out of range).
- * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` was not found on bus.
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
@@ -184,32 +180,107 @@ TODO: bounds (mtb addrs, ports)
 
  * Sets state of output pin `port` on module `module` to state `state`.
  * Returns 0 by default.
- * Returns `MTB_MODULE_INVALID_ADDR` when invalid module address is passed
-   (out of range).
- * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` was not found on bus.
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 
+## MTB-USB board
+
+##### `function GetDeviceCount():Integer`
+
+ * Returns amount of connected MTB-USB boards.
+
+
+##### `function GetDeviceSerial(index:Integer, serial:PChar, serialLen:Cardinal)`
+
+ * Returns serial name of MTB-USB device at index `index` into `serial`.
+ * When invalid index is passed, empty string is returned.
+
+
 ## MTB modules
 
-##### `function IsModule(module:Cardinal):Integer`
-##### `function GetModuleType(module:Cardinal):Integer`
-##### `function GetModuleName(name:PChar; nameLen:Cardinal):Integer`
-##### `function GetModuleFW(fw:PChar; fwLen:Cardinal):Integer`
-##### `function SetModuleName(name:PChar):Integer`
+##### `function IsModule(module:Cardinal):Boolean`
 
-##### `function SetMtbSpeed(speed:Integer):Integer`
+ * Returns `true` if and only if mtb module with address `module` is fully
+   operable now.
+ * `IsModule(failed_module) = false`.
+
+
+##### `function IsModuleFailure(module:Cardinal):Boolean`
+
+ * Returns `true` for modules, which are in *failed* state (i. e. modules
+   which were disovered, but failed during communication – this could
+   happen when modules are cut of a electricity).
+
+
+##### `function GetModuleCount():Cardinal`
+
+ * Returns amount of MTB modules discovered.
+ * Returns 0 when bus is not scanned of being scanned.
+ * Returns 0 after close.
+
+
+##### `function GetModuleType(module:Cardinal):Integer`
+
+ * Returns type of module with address `module`:
+  - `idMTB_UNI = $40`,
+  - `idMTB_UNIOUT = $50`,
+  - `idMTB_TTL = $60`,
+  - `idMTB_TTLOUT_ID = $70`
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when module does not exist.
+
+
+##### `function GetModuleName(module:Cardinal; name:PChar; nameLen:Cardinal):Integer`
+
+ * Puts name of a module `module` into `name`.
+ * Returns 0 by default.
+ * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+
+
+##### `function GetModuleFW(module:Cardinal; fw:PChar; fwLen:Cardinal):Integer`
+
+ * Puts firware version of module `module` into `fw`.
+ * Returns 0 by default.
+ * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
 
 
 ## Library version functions
 
 ##### `function GetDeviceVersion(version:PChar; versionLen:Cardinal):Integer`
-##### `function GetDriverVersion(version:PChar; versionLen:Cardinal):Integer`
-##### `function GetLibVersion(version:PChar; versionLen:Cardinal):Integer`
+
+ * Puts version of MTB-USB device into `version`.
+ * Library must be connected to MTB-USB device to make this information
+   available.
+ * Returns 0 by default.
+ * Returns `MTB_DEVIE_DISCONNECTED` when not connected to MTB-USB device.
+
+
+##### `procedure GetDriverVersion(version:PChar; versionLen:Cardinal)`
+
+ * Puts version of MTB driver into `version`.
+
+
+##### `procedure GetLibVersion(version:PChar; versionLen:Cardinal)`
+
+ * Puts library version into `version`.
 
 
 ## Event binders
+
+ * Each of the following functions allows parent application to specify its own
+   callback function which is called when certain event happens.
+ * E. g. by calling `BindBeforeOpen(myFunc, nil)` you specify, that `myFunc`
+   should be called before device is opened. `data` could be any valid pointer.
+   This pointer is forwarded into callback function as its parameter.
+ * Calling `BindBeforeOpen(nil, nil)` disables callback.
+
+```delphi
+TStdNotifyEvent = procedure (Sender: TObject; data:Pointer); stdcall;
+TStdLogEvent = procedure (Sender: TObject; data:Pointer; msg:PChar); stdcall;
+TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: word; errAddr: byte; errMsg:PChar); stdcall;
+TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: byte); stdcall;
+```
 
 ##### `procedure BindBeforeOpen(event:TStdNotifyEvent; data:Pointer)`
 ##### `procedure BindAfterOpen(event:TStdNotifyEvent; data:Pointer)`
