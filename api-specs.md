@@ -5,6 +5,7 @@ Error codes are available [here](error-codes).
 All functions and procedures are called by `stdcall`.
 
 TODO: list callbacks.
+TODO: bounds (mtb addrs, ports)
 
 ## Configuration files
 
@@ -157,8 +158,37 @@ TODO: list callbacks.
 ## MTB IO functions
 
 ##### `function GetInput(module, port:Cardinal):Integer`
+
+ * This function returns input state of port `port` on mtb module `module`.
+ * Returns 0/1 by default.
+ * Returns `MTB_MODULE_INVALID_ADDR` when invalid module address is passed
+   (out of range).
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` was not found on bus.
+ * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+
+
 ##### `function GetOutput(module, port:Cardinal):Integer`
+
+ * Returns state of output pin `port` on module `module`.
+ * Returns 0-255 by default (higher numbers for scom), 0-1 for MTB-UNI and
+   MTB-TTL.
+ * Returns `MTB_MODULE_INVALID_ADDR` when invalid module address is passed
+   (out of range).
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` was not found on bus.
+ * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+
+
 ##### `function SetOutput(module, port:Cardinal; state:Integer):Integer`
+
+ * Sets state of output pin `port` on module `module` to state `state`.
+ * Returns 0 by default.
+ * Returns `MTB_MODULE_INVALID_ADDR` when invalid module address is passed
+   (out of range).
+ * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` was not found on bus.
+ * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 
 ## MTB modules
