@@ -26,7 +26,7 @@ The library has windows, however, it is fully operable withnout using them.
 
  * MTB is a RS485-based bus which consists of a single master (called MTB-USB)
    and multiple slaves.
- * There are several types of slaves, each has different deatures:
+ * There are several types of slaves, each has different features:
   - MTB-UNI
   - MTB-UNIm
   - MTB-TTL
@@ -37,8 +37,8 @@ The library has windows, however, it is fully operable withnout using them.
  * This library supports only MTB-UNI, MTB-UNIm and MTB-TTL.
  * This library allows user to detect states of inputs and set states of outputs.
  * Each board has its unique address.
- * There are 16 input and 16 output ports on each of MTB-UNI, MTB-UNIm and
-   MTB-TLL boars, there pins are indexed 0-15.
+ * There are 16 input and 16 output ports on each MTB-UNI, MTB-UNIm or
+   MTB-TLL board, these pins are indexed 0-15.
 
 ## Sample workflow
 
