@@ -91,7 +91,6 @@ TODO: list callbacks.
  * This function performs `open` and starts scanning modules.
  * Calls `BeforeOpen` event when opening starts.
  * When module scanning is finished, `AfterOpen` event is called.
-
  * Returns 0 by default.
  * Returns `MTB_ALREADY_OPENNED` when device is already openned.
  * Returns `MTB_CANNOT_OPEN_PORT` whet FT open device was unsuccessful
@@ -111,7 +110,6 @@ TODO: list callbacks.
  * Calls `BeforeClose` event when closing starts.
  * `AfterClose` event is caled after close. This event is calle always (we
    always manage to close device somehow)!
-
  * Returns 0 by default.
  * Returns `MTB_NOT_OPENED` when device not opened.
 
@@ -121,7 +119,6 @@ TODO: list callbacks.
  * Starts communication with MTB after opening and module scanning.
  * This function calls `BeforeStart` after starting begins.
  * `AfterStart` event is called when communication successfully started.
-
  * Returns 0 by default.
  * Returns `MTB_ALREADY_STARTED` when communication with MTB already started.
  * Returns `MTB_FIRMWARE_TOO_LOW` when MTB-USB firware is lower than 0.9.20.
@@ -138,7 +135,6 @@ TODO: list callbacks.
  * This function calls `BeforeStop` after stopping begins.
  * `AfterStop` is called after after communication with MTB is stopped.
    This event is called always.
-
  * Returns 0 by default.
  * Returns `MTB_NOT_STARTED` when trying to stop non-existing communication.
 
