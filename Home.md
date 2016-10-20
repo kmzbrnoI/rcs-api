@@ -3,7 +3,8 @@
 This wiki describes functionality of MTB.dll dynamic library and its API.
 
 MTB library is used to set and get state of [MTB modules](http://mtb.kmz-brno.cz)
-on model railroad via simple dll interface.
+on model railroad via simple dll interface. It supports MTB-UNI and MTB-TTL
+modules with firmware 4.1.
 
 This library could be loaded from any program (be sure to match library and
 application architecture [e.g. x86 or x86-64]). MTB.dll is currently distributed
