@@ -12,6 +12,8 @@ only in x86 (32-bit) architecture.
 The library is implemented in Object Pascal and usually being compiled in
 Delphi 2009 32-bit.
 
+The library has windows, however, it is fully operable withnout using them.
+
 ## Requirements
 
  * Fully operable [MTB-USB module](http://mtb.kmz-brno.cz/modul_usb.htm)
@@ -35,6 +37,20 @@ Delphi 2009 32-bit.
 ## API specification
 
 API specification is available [here](api-specs).
+
+## Configuration file specification
+
+Library configuration file specification is available [here](config).
+
+## Library workflow
+
+ * When initializezd, library tries to load default configuration file
+   places at `./mtb/data/mtbcfg.ini`.
+ * All logs are placed by default to file `./mtb/log/date.log`. This setting
+   could be changed in configuration file.
+ * Logging can be enabled/disabled in configuration file.
+ * Library automatically saves its configuration into `./mtb/data/mtbcfg.ini`
+   before exiting.
 
 ## Licence
 
