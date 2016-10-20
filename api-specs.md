@@ -4,9 +4,6 @@ Error codes are available [here](error-codes).
 
 All functions and procedures are called by `stdcall`.
 
-TODO: list callbacks.
-TODO: bounds (mtb addrs, ports)
-
 ## Configuration files
 
 ##### `function LoadConfig(filename:PChar):Integer`

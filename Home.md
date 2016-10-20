@@ -36,7 +36,7 @@ The library has windows, however, it is fully operable withnout using them.
   - Both of these modules have 16 digital inputs and 16 digital outputs.
  * This library supports only MTB-UNI, MTB-UNIm and MTB-TTL.
  * This library allows user to detect states of inputs and set states of outputs.
- * Each board has its unique address.
+ * Each board has its unique address, 1-255.
  * There are 16 input and 16 output ports on each MTB-UNI, MTB-UNIm or
    MTB-TLL board, these pins are indexed 0-15.
 
