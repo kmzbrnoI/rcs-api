@@ -28,7 +28,7 @@ The library has windows, however, it is fully operable withnout using them.
  2.  Install drivers.
  3.  Load the library into you program.
  4.  Select one of available MTB-USB boards.
- 5.  Open device (by calling `Open` from your app).
+ 5.  Open device (by calling `Open` from your app, wait for modules being scanned).
  6.  Optional: configure modules (configuration will be saved).
  7.  Start communication (by calling `Start` from your app).
  8.  Use the bus (`SetOutput`, `GetInput`, ...).

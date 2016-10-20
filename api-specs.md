@@ -114,6 +114,16 @@ TODO: list callbacks.
  * Returns `MTB_NOT_OPENED` when device not opened.
 
 
+##### `function Opened():Boolean`
+
+ * Returns `true` if MTB device is opened, `false` otherwise.
+
+
+##### `function Scanned():Boolean`
+
+ * Returns `true` if MTB modules scanning is finished, `false` otherwise.
+
+
 ##### `function Start():Integer`
 
  * Starts communication with MTB after opening and module scanning.
@@ -139,15 +149,19 @@ TODO: list callbacks.
  * Returns `MTB_NOT_STARTED` when trying to stop non-existing communication.
 
 
+##### `function Started():Boolean`
+
+ * Returns `true` if MTB communication is enabled, `false` otherwise.
+
+
 ## MTB IO functions
 
 ##### `function GetInput(module, port:Cardinal):Integer`
 ##### `function GetOutput(module, port:Cardinal):Integer`
 ##### `function SetOutput(module, port:Cardinal; state:Integer):Integer`
 
-##### `function GetDeviceVersion(version:PChar; versionLen:Cardinal):Integer`
-##### `function GetDriverVersion(version:PChar; versionLen:Cardinal):Integer`
-##### `function GetLibVersion(version:PChar; versionLen:Cardinal):Integer`
+
+## MTB modules
 
 ##### `function IsModule(module:Cardinal):Integer`
 ##### `function GetModuleType(module:Cardinal):Integer`
@@ -156,10 +170,18 @@ TODO: list callbacks.
 ##### `function SetModuleName(name:PChar):Integer`
 
 ##### `function SetMtbSpeed(speed:Integer):Integer`
-##### `function Opened():Boolean`
-##### `function Started():Boolean`
 
-##### `procedure BindBeforeOepn(event:TStdNotifyEvent; data:Pointer)`
+
+## Library version functions
+
+##### `function GetDeviceVersion(version:PChar; versionLen:Cardinal):Integer`
+##### `function GetDriverVersion(version:PChar; versionLen:Cardinal):Integer`
+##### `function GetLibVersion(version:PChar; versionLen:Cardinal):Integer`
+
+
+## Event binders
+
+##### `procedure BindBeforeOpen(event:TStdNotifyEvent; data:Pointer)`
 ##### `procedure BindAfterOpen(event:TStdNotifyEvent; data:Pointer)`
 ##### `procedure BindBeforeClose(event:TStdNotifyEvent; data:Pointer)`
 ##### `procedure BindAfterClose(event:TStdNotifyEvent; data:Pointer)`
@@ -174,3 +196,4 @@ TODO: list callbacks.
 
 ##### `procedure BindOnInputChanged(event:TStdModuleChangeEvent; data:Pointer)`
 ##### `procedure BindOnOutputChanged(event:TStdModuleChangeEvent; data:Pointer)`
+
