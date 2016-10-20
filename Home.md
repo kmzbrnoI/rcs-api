@@ -45,7 +45,7 @@ Library configuration file specification is available [here](config).
 ## Library workflow
 
  * When initializezd, library tries to load default configuration file
-   places at `./mtb/data/mtbcfg.ini`.
+   placed at `./mtb/data/mtbcfg.ini`.
  * All logs are placed by default to file `./mtb/log/date.log`. This setting
    could be changed in configuration file.
  * Logging can be enabled/disabled in configuration file.
