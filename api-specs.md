@@ -35,12 +35,16 @@ All functions and procedures are called by `stdcall`.
 
  * Sets file-logging loglevel.
  * Loglevels:
-   0. no logging
-   1. errors
-   2. change of state
-   3. commands
-   4. raw commands
-   5. debug
+
+```
+0 - no logging
+1 - errors
+2 - change of state
+3 - commands
+4 - raw commands
+5 - debug
+```
+
 
 ##### `procedure SetLogLevelEvent(loglevel:Cardinal)`
 
