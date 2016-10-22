@@ -33,19 +33,19 @@ All functions and procedures are called by `stdcall`.
 
 ##### `procedure SetLogWrite(state:boolean)`
 
- * Sets wheter to log data into logfile.
+ * Sets whether to log data into logfile.
  * This option does not affect loging into main application by calling
    `OnLog` event.
 
 ##### `procedure SetDataInWrite(state:boolean)`
 
- * Sets wheter to log raw input data from MTB-USB.
+ * Sets whether to log raw input data from MTB-USB.
  * This option affects logging into main application via `OnLog` event.
 
 
 ##### `procedure SetDataOutWrite(state:boolean)`
 
- * Sets wheter to log raw output data to MTB-USB.
+ * Sets whether to log raw output data to MTB-USB.
  * This option affects logging into main application via `OnLog` event.
 
 
