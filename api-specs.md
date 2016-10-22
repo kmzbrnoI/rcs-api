@@ -243,7 +243,8 @@ All functions and procedures are called by `stdcall`.
  * Library must be connected to MTB-USB device to make this information
    available.
  * Returns 0 by default.
- * Returns `MTB_DEVIE_DISCONNECTED` when not connected to MTB-USB device.
+ * Returns `MTB_DEVICE_DISCONNECTED` when not connected to MTB-USB device.
+ * `version` should be at least 16 bytes long.
 
 
 ##### `procedure GetDriverVersion(version:PChar; versionLen:Cardinal)`
