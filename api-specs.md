@@ -31,22 +31,21 @@ All functions and procedures are called by `stdcall`.
 
 ## Logging
 
-##### `procedure SetLogWrite(state:boolean)`
+##### `procedure SetLogLevelFile(loglevel:Cardinal)`
 
- * Sets whether to log data into logfile.
- * This option does not affect loging into main application by calling
-   `OnLog` event.
+ * Sets file-logging loglevel.
+ * Loglevels:
+   0. no logging
+   1. errors
+   2. change of state
+   3. commands
+   4. raw commands
+   5. debug
 
-##### `procedure SetDataInWrite(state:boolean)`
+##### `procedure SetLogLevelEvent(loglevel:Cardinal)`
 
- * Sets whether to log raw input data from MTB-USB.
- * This option affects logging into main application via `OnLog` event.
-
-
-##### `procedure SetDataOutWrite(state:boolean)`
-
- * Sets whether to log raw output data to MTB-USB.
- * This option affects logging into main application via `OnLog` event.
+ * Sets event-logging loglevel.
+ * Loglevels: same as above.
 
 
 ##### `function GetLogWrite():boolean`
