@@ -74,11 +74,6 @@ All functions and procedures are called by `stdcall`.
  * Hides configuration dialog.
 
 
-##### `procedure ShowAboutDialog()`
-
- * Shows about dialog as modal window.
-
-
 ## MTB open/close start/stop
 
 ##### `function Open():Integer`
