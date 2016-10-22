@@ -182,7 +182,7 @@ All functions and procedures are called by `stdcall`.
  * Returns amount of connected MTB-USB boards.
 
 
-##### `function GetDeviceSerial(index:Integer, serial:PChar, serialLen:Cardinal)`
+##### `procedure GetDeviceSerial(index:Integer, serial:PChar, serialLen:Cardinal)`
 
  * Returns serial name of MTB-USB device at index `index` into `serial`.
  * When invalid index is passed, empty string is returned.
