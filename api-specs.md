@@ -110,11 +110,6 @@ All functions and procedures are called by `stdcall`.
  * Returns `true` if MTB device is opened, `false` otherwise.
 
 
-##### `function Scanned():Boolean`
-
- * Returns `true` if MTB modules scanning is finished, `false` otherwise.
-
-
 ##### `function Start():Integer`
 
  * Starts communication with MTB after opening and module scanning.
@@ -126,7 +121,7 @@ All functions and procedures are called by `stdcall`.
    In this case, upgrade is required and Start failes.
  * Returns `MTB_NO_MODULES` when no modules were found. In this case,
    Start function fails.
- * Returns `MTB_OPENING_NOT_FINISHED` when trying to start before module
+ * Returns `MTB_NOT_OPENED` when trying to start before module
    scanning is finished. Start function fails.
 
 
@@ -151,7 +146,7 @@ All functions and procedures are called by `stdcall`.
 
  * This function returns input state of port `port` on mtb module `module`.
  * Returns 0/1 by default.
- * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` is not available on bus.
+ * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
@@ -186,6 +181,7 @@ All functions and procedures are called by `stdcall`.
 
  * Returns serial name of MTB-USB device at index `index` into `serial`.
  * When invalid index is passed, empty string is returned.
+ * `serial` should be at least 32 bytes long.
 
 
 ## MTB modules
@@ -218,14 +214,15 @@ All functions and procedures are called by `stdcall`.
   - `idMTB_UNIOUT = $50`,
   - `idMTB_TTL = $60`,
   - `idMTB_TTLOUT_ID = $70`
- * Returns `MTB_MODULE_NOT_AVAILABLE` when module does not exist.
+ * Returns `MTB_MODULE_INVALID_ADDR` when module does not exist.
 
 
 ##### `function GetModuleName(module:Cardinal; name:PChar; nameLen:Cardinal):Integer`
 
  * Puts name of a module `module` into `name`.
  * Returns 0 by default.
- * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * Returns `MTB_MODULE_INVALID_ADDR` when module address is out of range.
+ * `name` should be at least 32 bytes long.
 
 
 ##### `function GetModuleFW(module:Cardinal; fw:PChar; fwLen:Cardinal):Integer`
@@ -233,6 +230,7 @@ All functions and procedures are called by `stdcall`.
  * Puts firware version of module `module` into `fw`.
  * Returns 0 by default.
  * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * `fw` should be at least 8 bytes long.
 
 
 ## Library version functions
@@ -250,11 +248,13 @@ All functions and procedures are called by `stdcall`.
 ##### `procedure GetDriverVersion(version:PChar; versionLen:Cardinal)`
 
  * Puts version of MTB driver into `version`.
+ * `version` should be at least 16 bytes long.
 
 
 ##### `procedure GetLibVersion(version:PChar; versionLen:Cardinal)`
 
  * Puts library version into `version`.
+ * `version` should be at least 16 bytes long.
 
 
 ## Event binders
