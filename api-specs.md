@@ -52,19 +52,14 @@ All functions and procedures are called by `stdcall`.
  * Loglevels: same as above.
 
 
-##### `function GetLogWrite():boolean`
+##### `function GetLogLevelFile():Cardinal`
 
- * Returns `true` when logging to file enabled, `false` otherwise.
-
-
-##### `function GetDataInWrite():boolean`
-
- * Returns `true` when logging raw input data enabled, `false` otherwise.
+ * Returns file loglevel.
 
 
-##### `function GetDataOutWrite():boolean`
+##### `function GetLogLevelEvent():boolean`
 
- * Returns `true` when logging raw output data enabled, `false` otherwise.
+ * Returns event loglevel.
 
 
 ## Dialogs
