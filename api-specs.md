@@ -46,20 +46,15 @@ All functions and procedures are called by `stdcall`.
 ```
 
 
-##### `procedure SetLogLevelEvent(loglevel:Cardinal)`
+##### `procedure SetLogLevel(loglevel:Cardinal)`
 
  * Sets event-logging loglevel.
  * Loglevels: same as above.
 
 
-##### `function GetLogLevelFile():Cardinal`
+##### `function GetLogLevel():Cardinal`
 
- * Returns file loglevel.
-
-
-##### `function GetLogLevelEvent():boolean`
-
- * Returns event loglevel.
+ * Returns loglevel.
 
 
 ## Dialogs
@@ -168,6 +163,7 @@ All functions and procedures are called by `stdcall`.
  * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `MTB_INVALID_SCOM_SCOM` when scom code is not in 0 to 15.
 
 
 ## MTB-USB board
@@ -268,7 +264,7 @@ All functions and procedures are called by `stdcall`.
 
 ```pascal
 TStdNotifyEvent = procedure (Sender: TObject; data:Pointer); stdcall;
-TStdLogEvent = procedure (Sender: TObject; data:Pointer; msg:PChar); stdcall;
+TStdLogEvent = procedure (Sender: TObject; data:Pointer; logLevel:Integer; msg:PChar); stdcall;
 TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: word; errAddr: byte; errMsg:PChar); stdcall;
 TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: byte); stdcall;
 ```
