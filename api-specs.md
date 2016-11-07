@@ -98,6 +98,8 @@ All functions and procedures are called by `stdcall`.
    always manage to close device somehow)!
  * Returns 0 by default.
  * Returns `MTB_NOT_OPENED` when device not opened.
+ * Returns `MTB_SCANNING_NOT_FINISHED` when trying to while scanning modules.
+   Closing is not permitted while scaning modules.
 
 
 ##### `function Opened():Boolean`
