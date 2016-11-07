@@ -254,12 +254,6 @@ All functions and procedures are called by `stdcall`.
  * `version` should be at least 16 bytes long.
 
 
-##### `procedure GetLibVersion(version:PChar; versionLen:Cardinal)`
-
- * Puts library version into `version`.
- * `version` should be at least 16 bytes long.
-
-
 ## Event binders
 
  * Each of the following functions allows parent application to specify its own
