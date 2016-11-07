@@ -1,6 +1,6 @@
 # MTB library API
 
-Error codes are available [here](error-codes).
+Error codes are available at src/Errors.pas.
 
 All functions and procedures are called by `stdcall`.
 
