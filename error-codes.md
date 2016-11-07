@@ -29,9 +29,8 @@
 2107 MTB_MODULE_SUM_ERROR_GIVING_UP
 2108 MTB_INVALID_PACKET
 
-3000-3999 module errors
+3000-3999 module errors (see TMTBusb.GetErrString)
 4000-4999 FTDI driver errors
 
-... TODO
 ```
 
