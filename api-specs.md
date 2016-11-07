@@ -118,6 +118,8 @@ All functions and procedures are called by `stdcall`.
    Start function fails.
  * Returns `MTB_NOT_OPENED` when trying to start before module
    scanning is finished. Start function fails.
+ * Returns `MTB_SCANNING_NOT_FINISHED` when scaning of the bus if
+   not finished yet.
 
 
 ##### `function Stop():Integer`
