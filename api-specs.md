@@ -149,6 +149,7 @@ All functions and procedures are called by `stdcall`.
  * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `MTB_INPUT_NOT_YET_SCANNED` when input port is not yet scanned.
 
 
 ##### `function GetOutput(module, port:Cardinal):Integer`
