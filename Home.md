@@ -13,7 +13,7 @@ only in x86 (32-bit) architecture.
 The library is implemented in Object Pascal and usually being compiled in
 Delphi 2009 32-bit.
 
-The library has windows, however, it is fully operable withnout using them.
+The library has windows, however, it is fully operable without using them.
 
 ## Requirements
 
@@ -21,6 +21,7 @@ The library has windows, however, it is fully operable withnout using them.
    connected to PC via USB.
  * MTB-USB driver (available in project releases). Driver is custom FTDI driver,
    installation from unknown sources is required to install this driver.
+ * Writeable `./mtb/mtbcfg.ini`.
 
 ## Short intro to MTB
 
@@ -63,12 +64,10 @@ Library configuration file specification is available [here](config).
 
 ## Library workflow
 
- * When initializezd, library tries to load default configuration file
-   placed at `./mtb/data/mtbcfg.ini`.
- * All logs are placed by default to file `./mtb/log/date.log`. This setting
-   could be changed in configuration file.
+ * When initialized, library tries to load default configuration file
+   placed at `./mtb/mtbcfg.ini`.
  * Logging can be enabled/disabled in configuration file.
- * Library automatically saves its configuration into `./mtb/data/mtbcfg.ini`
+ * Library automatically saves its configuration into `./mtb/mtbcfg.ini`
    before exiting.
 
 ## Licence
