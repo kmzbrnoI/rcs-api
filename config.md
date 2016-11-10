@@ -1,4 +1,4 @@
-# Config file specification
+# Configuration file specification
 
 TODO
 

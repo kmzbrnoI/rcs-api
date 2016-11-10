@@ -12,7 +12,7 @@ All functions and procedures are called by `stdcall`.
  * This function could only be called when device is *closed*.
  * Returns 0 by default.
  * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
- * Returns `MTB_FILE_DEVICE_OPENED` when trying to load confugration with opened
+ * Returns `MTB_FILE_DEVICE_OPENED` when trying to load configuration with opened
    device.
  * Old configuration is kept when cannot access file.
 
@@ -78,7 +78,7 @@ All functions and procedures are called by `stdcall`.
  * Calls `BeforeOpen` event when opening starts.
  * When module scanning is finished, `AfterOpen` event is called.
  * Returns 0 by default.
- * Returns `MTB_ALREADY_OPENNED` when device is already openned.
+ * Returns `MTB_ALREADY_OPENNED` when device is already opened.
  * Returns `MTB_CANNOT_OPEN_PORT` whet FT open device was unsuccessful
    (more information in log).
 
@@ -87,19 +87,19 @@ All functions and procedures are called by `stdcall`.
 
  * Opens device `device`.
  * When `persist` is `true`, device name is saved to configuration.
- * Simillar to `Open()`.
+ * Similar to `Open()`.
 
 
 ##### `function Close():Integer`
 
  * Closes opened device.
  * Calls `BeforeClose` event when closing starts.
- * `AfterClose` event is caled after close. This event is calle always (we
+ * `AfterClose` event is called after close. This event is called always (we
    always manage to close device somehow)!
  * Returns 0 by default.
  * Returns `MTB_NOT_OPENED` when device not opened.
  * Returns `MTB_SCANNING_NOT_FINISHED` when trying to while scanning modules.
-   Closing is not permitted while scaning modules.
+   Closing is not permitted while scanning modules.
 
 
 ##### `function Opened():Boolean`
@@ -114,13 +114,13 @@ All functions and procedures are called by `stdcall`.
  * `AfterStart` event is called when communication successfully started.
  * Returns 0 by default.
  * Returns `MTB_ALREADY_STARTED` when communication with MTB already started.
- * Returns `MTB_FIRMWARE_TOO_LOW` when MTB-USB firware is lower than 0.9.20.
-   In this case, upgrade is required and Start failes.
+ * Returns `MTB_FIRMWARE_TOO_LOW` when MTB-USB firmware is lower than 0.9.20.
+   In this case, upgrade is required and Start fails.
  * Returns `MTB_NO_MODULES` when no modules were found. In this case,
    Start function fails.
  * Returns `MTB_NOT_OPENED` when trying to start before module
    scanning is finished. Start function fails.
- * Returns `MTB_SCANNING_NOT_FINISHED` when scaning of the bus if
+ * Returns `MTB_SCANNING_NOT_FINISHED` when scanning of the bus if
    not finished yet.
 
 
@@ -200,7 +200,7 @@ All functions and procedures are called by `stdcall`.
 ##### `function IsModuleFailure(module:Cardinal):Boolean`
 
  * Returns `true` for modules, which are in *failed* state (i. e. modules
-   which were disovered, but failed during communication – this could
+   which were discovered, but failed during communication – this could
    happen when modules are cut of a electricity).
 
 
@@ -231,7 +231,7 @@ All functions and procedures are called by `stdcall`.
 
 ##### `function GetModuleFW(module:Cardinal; fw:PChar; fwLen:Cardinal):Integer`
 
- * Puts firware version of module `module` into `fw`.
+ * Puts firmware version of module `module` into `fw`.
  * Returns 0 by default.
  * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
  * `fw` should be at least 8 bytes long.
