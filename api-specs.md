@@ -112,6 +112,7 @@ All functions and procedures are called by `stdcall`.
  * Starts communication with MTB after opening and module scanning.
  * This function calls `BeforeStart` after starting begins.
  * `AfterStart` event is called when communication successfully started.
+ * `OnScanned` event is called after all the inputs are scanned.
  * Returns 0 by default.
  * Returns `MTB_ALREADY_STARTED` when communication with MTB already started.
  * Returns `MTB_FIRMWARE_TOO_LOW` when MTB-USB firmware is lower than 0.9.20.
@@ -287,3 +288,4 @@ TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: byte);
 ##### `procedure BindOnInputChanged(event:TStdModuleChangeEvent; data:Pointer)`
 ##### `procedure BindOnOutputChanged(event:TStdModuleChangeEvent; data:Pointer)`
 
+##### `procedure BindOnScanned(event:TStdNotifyEvent; data:Pointer)`
