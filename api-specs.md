@@ -31,9 +31,9 @@ All functions and procedures are called by `stdcall`.
 
 ## Logging
 
-##### `procedure SetLogLevelFile(loglevel:Cardinal)`
+##### `procedure SetLogLevel(loglevel:Cardinal)`
 
- * Sets file-logging loglevel.
+ * Sets event-logging loglevel.
  * Loglevels:
 
 ```
@@ -44,12 +44,6 @@ All functions and procedures are called by `stdcall`.
 4 - raw commands
 5 - debug
 ```
-
-
-##### `procedure SetLogLevel(loglevel:Cardinal)`
-
- * Sets event-logging loglevel.
- * Loglevels: same as above.
 
 
 ##### `function GetLogLevel():Cardinal`
