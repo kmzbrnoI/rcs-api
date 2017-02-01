@@ -1,4 +1,4 @@
 # Configuration file specification
 
-TODO
+Configuration file is a simple `ini` file with intuitive semantics.
 
