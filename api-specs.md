@@ -166,7 +166,7 @@ All functions and procedures are called by `stdcall`.
  * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
- * Returns `MTB_INVALID_SCOM_SCOM` when scom code is not in 0 to 15.
+ * Returns `MTB_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
 
 
 ## MTB-USB board
