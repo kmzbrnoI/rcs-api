@@ -153,7 +153,7 @@ All functions and procedures are called by `stdcall`.
  * Returns 0-255 by default (higher numbers for scom), 0-1 for MTB-UNI and
    MTB-TTL.
  * Returns `MTB_NOT_STARTED` when communication with MTB not started.
- * Returns `MTB_MODULE_NOT_AVAILABLE` when `module` is not available on bus.
+ * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
