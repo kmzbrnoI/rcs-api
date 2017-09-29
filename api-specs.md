@@ -232,6 +232,22 @@ All functions and procedures are called by `stdcall`.
  * `fw` should be at least 8 bytes long.
 
 
+##### `function GetModuleInputsCount(module:Cardinal):Cardinal`
+
+ * Returns number of inputs of module with address `module`.
+ * Result value can range in `0-15`, other values are forbidden!
+ * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * Number of inputs of a module can change during communication.
+
+
+##### `function GetModuleOutputsCount(module:Cardinal):Cardinal`
+
+ * Returns number of outputs of module with address `module`.
+ * Result value can range in `0-15`, other values are forbidden!
+ * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * Number of outputs of a module can change during communication.
+
+
 ## Library version functions
 
 ##### `function GetDeviceVersion(version:PChar; versionLen:Cardinal):Integer`
