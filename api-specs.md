@@ -238,6 +238,8 @@ All functions and procedures are called by `stdcall`.
  * Result value can range in `0-15`, other values are forbidden!
  * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
  * Number of inputs of a module can change during communication.
+ * When a library does not provide this function, it is assumed every active
+   module has 16 inputs (0-15).
 
 
 ##### `function GetModuleOutputsCount(module:Cardinal):Cardinal`
@@ -246,6 +248,8 @@ All functions and procedures are called by `stdcall`.
  * Result value can range in `0-15`, other values are forbidden!
  * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
  * Number of outputs of a module can change during communication.
+ * When a library does not provide this function, it is assumed every active
+   module has 16 outputs (0-15).
 
 
 ## Library version functions
