@@ -206,13 +206,10 @@ All functions and procedures are called by `stdcall`.
  * Returns 0 after close.
 
 
-##### `function GetModuleType(module:Cardinal):Integer`
+##### `function GetModuleTypeStr(type:PChar; typeLen:Cardinal):Integer`
 
- * Returns type of module with address `module`:
-  - `idMTB_UNI = $40`,
-  - `idMTB_UNIOUT = $50`,
-  - `idMTB_TTL = $60`,
-  - `idMTB_TTLOUT_ID = $70`
+ * Returns type of a module with address `module` as string into `type`.
+ * Returns 0 by default.
  * Returns `MTB_MODULE_INVALID_ADDR` when module does not exist.
 
 
