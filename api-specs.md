@@ -1,4 +1,4 @@
-# MTB library API v1.1
+# MTB library API v1.2
 
 Error codes are available at `src/Errors.pas`.
 
