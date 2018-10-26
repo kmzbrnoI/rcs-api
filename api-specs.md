@@ -169,6 +169,25 @@ All functions and procedures are called by `stdcall`.
  * Returns `MTB_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
 
 
+##### `function GetInputType(module, port:Cardinal):Integer`
+
+ * This function returns type of inpput of port `port` on mtb module `module`.
+ * Returns 0 by default.
+ * Return value:
+    - 0 = plain input
+    - 1 = IR
+ * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+
+##### `function GetOutputType(module, port:Cardinal):Integer`
+
+ * This function returns type of output of port `port` on mtb module `module`.
+ * Returns 0 by default.
+ * Return value:
+    - 0 = plain output
+    - 1 = SCom
+ * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+
+
 ## MTB-USB board
 
 ##### `function GetDeviceCount():Integer`
