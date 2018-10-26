@@ -176,6 +176,7 @@ All functions and procedures are called by `stdcall`.
  * Return value:
     - 0 = plain input
     - 1 = IR
+ * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 ##### `function GetOutputType(module, port:Cardinal):Integer`
@@ -185,6 +186,7 @@ All functions and procedures are called by `stdcall`.
  * Return value:
     - 0 = plain output
     - 1 = SCom
+ * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 
