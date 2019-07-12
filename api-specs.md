@@ -226,7 +226,7 @@ in UTF-16.
 ##### `function GetModuleCount():Cardinal`
 
  * Returns amount of MTB modules discovered.
- * Returns 0 when bus is not scanned of being scanned.
+ * Returns 0 when bus is not scanned or being scanned.
  * Returns 0 after close.
 
 
