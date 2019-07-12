@@ -4,6 +4,9 @@ Error codes are available at `src/Errors.pas`.
 
 All functions and procedures are called by `stdcall`.
 
+Every `PChar` is a pointer to null-terminated UTF-16 string. All strings are
+in UTF-16.
+
 ## Configuration files
 
 ##### `function LoadConfig(filename:PChar):Integer`
