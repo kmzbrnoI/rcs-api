@@ -204,7 +204,7 @@ in UTF-16.
 
  * Returns serial name of MTB-USB device at index `index` into `serial`.
  * When invalid index is passed, empty string is returned.
- * `serial` should be at least 32 bytes long.
+ * `serial` should have space for at least 16 bytes.
 
 
 ## MTB modules
@@ -242,7 +242,7 @@ in UTF-16.
  * Puts name of a module `module` into `name`.
  * Returns 0 by default.
  * Returns `MTB_MODULE_INVALID_ADDR` when module address is out of range.
- * `name` should be at least 32 bytes long.
+ * `name` should have space for at least 16 bytes.
 
 
 ##### `function GetModuleFW(module:Cardinal; fw:PChar; fwLen:Cardinal):Integer`
@@ -250,7 +250,7 @@ in UTF-16.
  * Puts firmware version of module `module` into `fw`.
  * Returns 0 by default.
  * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
- * `fw` should be at least 8 bytes long.
+ * `fw` should have space for at least 8 bytes.
 
 
 ##### `function GetModuleInputsCount(module:Cardinal):Cardinal`
@@ -282,13 +282,13 @@ in UTF-16.
    available.
  * Returns 0 by default.
  * Returns `MTB_DEVICE_DISCONNECTED` when not connected to MTB-USB device.
- * `version` should be at least 16 bytes long.
+ * `version` should have space for at least 16 bytes.
 
 
 ##### `procedure GetDriverVersion(version:PChar; versionLen:Cardinal)`
 
  * Puts version of MTB driver into `version`.
- * `version` should be at least 16 bytes long.
+ * `version` should have space for at least 16 bytes.
 
 
 ## Event binders
