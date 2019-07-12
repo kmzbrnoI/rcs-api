@@ -227,7 +227,7 @@ All functions and procedures are called by `stdcall`.
  * Returns 0 after close.
 
 
-##### `function GetModuleTypeStr(type:PChar; typeLen:Cardinal):Integer`
+##### `function GetModuleTypeStr(module:Cardinal; type:PChar; typeLen:Cardinal):Integer`
 
  * Returns type of a module with address `module` as string into `type`.
  * Returns 0 by default.
