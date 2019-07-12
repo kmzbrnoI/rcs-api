@@ -200,7 +200,7 @@ in UTF-16.
  * Returns amount of connected MTB-USB boards.
 
 
-##### `procedure GetDeviceSerial(index:Integer, serial:PChar, serialLen:Cardinal)`
+##### `procedure GetDeviceSerial(index:Integer, serial:PChar, maxSerialLen:Cardinal)`
 
  * Returns serial name of MTB-USB device at index `index` into `serial`.
  * When invalid index is passed, empty string is returned.
@@ -230,14 +230,14 @@ in UTF-16.
  * Returns 0 after close.
 
 
-##### `function GetModuleTypeStr(module:Cardinal; type:PChar; typeLen:Cardinal):Integer`
+##### `function GetModuleTypeStr(module:Cardinal; type:PChar; maxTypeLen:Cardinal):Integer`
 
  * Returns type of a module with address `module` as string into `type`.
  * Returns 0 by default.
  * Returns `MTB_MODULE_INVALID_ADDR` when module does not exist.
 
 
-##### `function GetModuleName(module:Cardinal; name:PChar; nameLen:Cardinal):Integer`
+##### `function GetModuleName(module:Cardinal; name:PChar; maxNameLen:Cardinal):Integer`
 
  * Puts name of a module `module` into `name`.
  * Returns 0 by default.
@@ -245,7 +245,7 @@ in UTF-16.
  * `name` should have space for at least 32 bytes.
 
 
-##### `function GetModuleFW(module:Cardinal; fw:PChar; fwLen:Cardinal):Integer`
+##### `function GetModuleFW(module:Cardinal; fw:PChar; maxFwLen:Cardinal):Integer`
 
  * Puts firmware version of module `module` into `fw`.
  * Returns 0 by default.
@@ -275,7 +275,7 @@ in UTF-16.
 
 ## Library version functions
 
-##### `function GetDeviceVersion(version:PChar; versionLen:Cardinal):Integer`
+##### `function GetDeviceVersion(version:PChar; maxVersionLen:Cardinal):Integer`
 
  * Puts version of MTB-USB device into `version`.
  * Library must be connected to MTB-USB device to make this information
@@ -285,7 +285,7 @@ in UTF-16.
  * `version` should have space for at least 32 bytes.
 
 
-##### `procedure GetDriverVersion(version:PChar; versionLen:Cardinal)`
+##### `procedure GetDriverVersion(version:PChar; maxVersionLen:Cardinal)`
 
  * Puts version of MTB driver into `version`.
  * `version` should have space for at least 32 bytes.
