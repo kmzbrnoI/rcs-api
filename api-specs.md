@@ -1,4 +1,4 @@
-# MTB library API v1.2
+# MTB library API v1.3
 
 Error codes are available at `src/Errors.pas`.
 
@@ -275,6 +275,29 @@ in UTF-16.
 
 ## Library version functions
 
+API version is `Cardinal` (`unsigned int`) with MSB meaning the major version
+and seconds MSB meaning minor version. The rest of bytes is 0.
+
+Library may support multiple version of API and caller may support multiple
+version of API too. It is caller's responsibility to choose which version of
+API to use. Caller determines which versions of API library supports by
+calling `ApiSupportsVersion` functions. When it chooses API version, it should
+call `ApiSetVersion` so the library knows the intended version of API too.
+These functions should be the first functions caller calls in the library.
+When these functions are not implemented, `v1.2` of library is assumed.
+
+##### `function ApiSupportsVersion(version:Cardinal):Boolean`
+
+ * Asks library if it supports API version `version`.
+ * Return value = if it supports the version or not
+
+
+##### `function ApiSetVersion(version:Cardinal):Boolean`
+
+ * Sets the API version.
+ * Should be called at least once at the beginning.
+
+
 ##### `function GetDeviceVersion(version:PChar; maxVersionLen:Cardinal):Integer`
 
  * Puts version of MTB-USB device into `version`.
@@ -324,3 +347,10 @@ TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: byte);
 ##### `procedure BindOnOutputChanged(event:TStdModuleChangeEvent; data:Pointer)`
 
 ##### `procedure BindOnScanned(event:TStdNotifyEvent; data:Pointer)`
+
+## Changelog
+
+### v1.3
+
+ * add API version functions & workflow
+ * `TStdErrorEvent` uses `Cardinal` for module address instead of `Byte`
