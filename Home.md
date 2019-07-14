@@ -67,8 +67,8 @@ Library configuration file specification is available [here](config).
  * When initialized, library tries to load default configuration file
    placed at `./mtb/mtbcfg.ini`.
  * Logging can be enabled/disabled in configuration file.
- * Library automatically saves its configuration into `./mtb/mtbcfg.ini`
-   before exiting.
+ * Library automatically saves its configuration into the location of last
+   opened configuration file before exiting.
 
 ## Licence
 
