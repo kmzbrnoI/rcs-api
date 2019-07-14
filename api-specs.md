@@ -275,8 +275,8 @@ in UTF-16.
 
 ## Library version functions
 
-API version is `Cardinal` (`unsigned int`) with MSB meaning the major version
-and seconds MSB meaning minor version. The rest of bytes is 0.
+API version is `Cardinal` (`unsigned int`) with LSB meaning the major version
+and seconds LSB meaning minor version. The rest of bytes is 0.
 
 Library may support multiple version of API and caller may support multiple
 version of API too. It is caller's responsibility to choose which version of
