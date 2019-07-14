@@ -34,6 +34,12 @@ in UTF-16.
  * This function could be called at any time.
 
 
+#### `procedure SetConfigFileName(filename:PChar)`
+
+ * Sets filename for next config saving.
+ * This function is compulsory, it is not required.
+
+
 ## Logging
 
 ##### `procedure SetLogLevel(loglevel:Cardinal)`
@@ -363,3 +369,4 @@ Whole version history is available in git history of this wiki (see tags)
  * events use `Cardinal` for module address instead of `Byte`
  * change the way config file paths are handled (caller should determine config
    file location)
+ * add `SetConfigFileName` procedure.
