@@ -370,3 +370,18 @@ Whole version history is available in git history of this wiki (see tags)
  * change the way config file paths are handled (caller should determine config
    file location)
  * add `SetConfigFileName` procedure.
+
+### v1.2
+
+ * Update error codes.
+ * Minor fixes.
+ * Explain some error codes.
+
+### v1.1
+
+ * Add request for number of IO pins per module.
+ * `GetModuleType` → `GetModuleTypeStr`
+
+### v1.0
+
+ * Initial version of API.
