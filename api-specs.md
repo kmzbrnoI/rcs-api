@@ -68,11 +68,15 @@ in UTF-16.
 ##### `procedure ShowConfigDialog()`
 
  * Shows configuration window as non-modal window.
+ * This function is not compulsory.
+ * Function absence = library has no GUI.
 
 
 ##### `procedure HideConfigDialog()`
 
  * Hides configuration dialog.
+ * This function is not compulsory.
+ * Function absence = library has no GUI.
 
 
 ## MTB open/close start/stop
@@ -366,11 +370,12 @@ Whole version history is available in git history of this wiki (see tags)
 
 ### v1.3
 
- * add API version functions & workflow
- * events use `Cardinal` for module address instead of `Byte`
- * change the way config file paths are handled (caller should determine config
-   file location)
- * add `SetConfigFileName` procedure.
+ * Add API version functions & workflow.
+ * Events use `Cardinal` for module address instead of `Byte`.
+ * Change the way config file paths are handled (caller should determine config
+   file location).
+ * Add `SetConfigFileName` procedure.
+ * Make `ShowConfigDialog` & `HideConfigDialog` optional.
 
 ### v1.2
 
