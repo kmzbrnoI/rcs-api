@@ -50,10 +50,11 @@ in UTF-16.
 ```
 0 - no logging
 1 - errors
-2 - change of state
-3 - commands
-4 - raw commands
-5 - debug
+2 - warnings
+3 - info
+4 - commands
+5 - raw commands
+6 - debug
 ```
 
 
