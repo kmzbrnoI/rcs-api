@@ -350,6 +350,8 @@ TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: Cardin
 
 ## Changelog
 
+Whole version history is available in git history of this wiki (see tags)
+
 ### v1.3
 
  * add API version functions & workflow
