@@ -326,8 +326,8 @@ When these functions are not implemented, `v1.2` of library is assumed.
 ```pascal
 TStdNotifyEvent = procedure (Sender: TObject; data:Pointer); stdcall;
 TStdLogEvent = procedure (Sender: TObject; data:Pointer; logLevel:Integer; msg:PChar); stdcall;
-TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: word; errAddr: byte; errMsg:PChar); stdcall;
-TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: byte); stdcall;
+TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: Word; errAddr: Cardinal; errMsg:PChar); stdcall;
+TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: Cardinal); stdcall;
 ```
 
 ##### `procedure BindBeforeOpen(event:TStdNotifyEvent; data:Pointer)`
@@ -353,4 +353,4 @@ TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: byte);
 ### v1.3
 
  * add API version functions & workflow
- * `TStdErrorEvent` uses `Cardinal` for module address instead of `Byte`
+ * events use `Cardinal` for module address instead of `Byte`
