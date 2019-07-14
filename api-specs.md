@@ -292,10 +292,13 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Return value = if it supports the version or not
 
 
-##### `function ApiSetVersion(version:Cardinal):Boolean`
+##### `function ApiSetVersion(version:Cardinal):Integer`
 
  * Sets the API version.
  * Should be called at least once at the beginning.
+ * Returns 0 on success.
+ * Returns `MTB_UNSUPPORTED_API_VERSION` when tried to set unsupported API
+   version.
 
 
 ##### `function GetDeviceVersion(version:PChar; maxVersionLen:Cardinal):Integer`
