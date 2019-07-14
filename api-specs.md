@@ -17,16 +17,18 @@ in UTF-16.
  * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
  * Returns `MTB_FILE_DEVICE_OPENED` when trying to load configuration with opened
    device.
- * Old configuration is kept when cannot access file.
+ * Old configuration is kept if cannot access file.
+ * Filename `filename` is used for future saving of config.
+ * **Caller is recommended to call this function right after API version
+   determination.**
+ * At start, library can load default config from from its working path, however
+   in most cases there would be no config file. The responsibility for setting
+   the config files location is not caller.
 
 
 ##### `function SaveConfig(filename:PChar):Integer`
 
  * Saves current library configuration to file `filename`
- * When `filename` is empty string, configuration is saved to default
-   location (`./mtb/data/mtbcfg.ini`)
- * This function can save configuration to another location, however, at the
-   next boot, `./mtb/data/mtbcfg.ini` will be loaded.
  * Returns 0 by default.
  * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
  * This function could be called at any time.
@@ -359,3 +361,5 @@ Whole version history is available in git history of this wiki (see tags)
 
  * add API version functions & workflow
  * events use `Cardinal` for module address instead of `Byte`
+ * change the way config file paths are handled (caller should determine config
+   file location)
