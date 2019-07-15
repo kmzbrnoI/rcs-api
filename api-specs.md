@@ -34,7 +34,7 @@ in UTF-16.
  * This function could be called at any time.
 
 
-#### `procedure SetConfigFileName(filename:PChar)`
+##### `procedure SetConfigFileName(filename:PChar)`
 
  * Sets filename for next config saving.
  * This function is compulsory, it is not required.
