@@ -243,9 +243,9 @@ in UTF-16.
  * Returns 0 after close.
 
 
-##### `function GetMaxModuleNumber():Cardinal`
+##### `function GetMaxModuleAddr():Cardinal`
 
- * Returns highest module number (index).
+ * Returns highest possible module address.
  * Return value of this function should keep constant for whole lifetime of
    the library.
 
@@ -382,7 +382,7 @@ Whole version history is available in git history of this wiki (see tags)
    file location).
  * Add `SetConfigFileName` procedure.
  * Make `ShowConfigDialog` & `HideConfigDialog` optional.
- * Add `GetMaxModuleNumber` function.
+ * Add `GetMaxModuleAddr` function.
 
 ### v1.2
 
