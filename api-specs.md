@@ -243,6 +243,12 @@ in UTF-16.
  * Returns 0 after close.
 
 
+##### `function GetMaxModuleNumber():Cardinal`
+
+ * Returns highest module number (index).
+ * Return value of this function should keep constant for whole lifetime of
+   the library.
+
 ##### `function GetModuleTypeStr(module:Cardinal; type:PChar; maxTypeLen:Cardinal):Integer`
 
  * Returns type of a module with address `module` as string into `type`.
@@ -376,6 +382,7 @@ Whole version history is available in git history of this wiki (see tags)
    file location).
  * Add `SetConfigFileName` procedure.
  * Make `ShowConfigDialog` & `HideConfigDialog` optional.
+ * Add `GetMaxModuleNumber` function.
 
 ### v1.2
 
