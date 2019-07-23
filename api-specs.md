@@ -389,6 +389,7 @@ Whole version history is available in git history of this wiki (see tags)
  * Add `GetMaxModuleAddr` function.
  * `GetModule*Count`: do not return `MTB_MODULE_INVALID_ADDR` when module not
    available on bus.
+ * Change meaning of log levels.
 
 ### v1.2
 
