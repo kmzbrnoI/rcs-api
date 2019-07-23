@@ -275,8 +275,10 @@ in UTF-16.
 ##### `function GetModuleInputsCount(module:Cardinal):Cardinal`
 
  * Returns number of inputs of module with address `module`.
+ * If module does not exist, returns expected number of inputs of module
+   with address `module`.
  * Result value can range in `0-15`, other values are forbidden!
- * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * Returns `MTB_MODULE_INVALID_ADDR` iff `module > GetMaxModuleAddr()`.
  * Number of inputs of a module can change during communication.
  * When a library does not provide this function, it is assumed every active
    module has 16 inputs (0-15).
@@ -285,8 +287,10 @@ in UTF-16.
 ##### `function GetModuleOutputsCount(module:Cardinal):Cardinal`
 
  * Returns number of outputs of module with address `module`.
+ * If module does not exist, returns expected number of outputs of module
+   with address `module`.
  * Result value can range in `0-15`, other values are forbidden!
- * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * Returns `MTB_MODULE_INVALID_ADDR` iff `module > GetMaxModuleAddr()`.
  * Number of outputs of a module can change during communication.
  * When a library does not provide this function, it is assumed every active
    module has 16 outputs (0-15).
