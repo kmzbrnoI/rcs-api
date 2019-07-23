@@ -387,6 +387,8 @@ Whole version history is available in git history of this wiki (see tags)
  * Add `SetConfigFileName` procedure.
  * Make `ShowConfigDialog` & `HideConfigDialog` optional.
  * Add `GetMaxModuleAddr` function.
+ * `GetModule*Count`: do not return `MTB_MODULE_INVALID_ADDR` when module not
+   available on bus.
 
 ### v1.2
 
