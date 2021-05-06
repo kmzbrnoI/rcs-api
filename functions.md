@@ -1,4 +1,5 @@
-# MTB library API v1.3
+RCS API v1.3 Functions Specification
+====================================
 
 Error codes are available at `src/Errors.pas`.
 
