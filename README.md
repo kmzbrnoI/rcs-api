@@ -10,8 +10,9 @@ and systems for controlling railroad accessories (e.g. MTB, XpressNET etc.).
 Every railroad control system `dll` library should implement API described in
 this document to be used from hJOP.
 
- * [Functions specification](functions.md).
+ * [Functions specification](functions.md)
  * [Error codes description](errors.md)
+ * [Changelog](changelog.md)
 
 
 ## Expected RCS workflow
