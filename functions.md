@@ -24,14 +24,12 @@ in UTF-16.
    in most cases there would be no config file. The responsibility for setting
    the config files location is not caller.
 
-
 ##### `function SaveConfig(filename:PChar):Integer`
 
  * Saves current library configuration to file `filename`
  * Returns 0 by default.
  * Returns `RCS_FILE_CANNOT_ACCESS` when cannot access configuration file.
  * This function could be called at any time.
-
 
 ##### `procedure SetConfigFileName(filename:PChar)`
 
@@ -56,7 +54,6 @@ in UTF-16.
 6 - debug
 ```
 
-
 ##### `function GetLogLevel():Cardinal`
 
  * Returns loglevel.
@@ -69,7 +66,6 @@ in UTF-16.
  * Shows configuration window as non-modal window.
  * This function is not compulsory.
  * Function absence = library has no GUI.
-
 
 ##### `procedure HideConfigDialog()`
 
@@ -91,7 +87,6 @@ in UTF-16.
  * Returns `RCS_CANNOT_OPEN_PORT` whet FT open device was unsuccessful
    (more information in log).
 
-
 ##### `function Close():Integer`
 
  * Closes opened device.
@@ -103,11 +98,9 @@ in UTF-16.
  * Returns `RCS_SCANNING_NOT_FINISHED` when trying to while scanning modules.
    Closing is not permitted while scanning modules.
 
-
 ##### `function Opened():Boolean`
 
  * Returns `true` if RCS device is opened, `false` otherwise.
-
 
 ##### `function Start():Integer`
 
@@ -126,7 +119,6 @@ in UTF-16.
  * Returns `RCS_SCANNING_NOT_FINISHED` when initial scanning of inputs of all
    modules is not finished yet.
 
-
 ##### `function Stop():Integer`
 
  * Stops RCS communication after successfully starting it.
@@ -135,7 +127,6 @@ in UTF-16.
    This event is called always.
  * Returns 0 by default.
  * Returns `RCS_NOT_STARTED` when trying to stop non-existing communication.
-
 
 ##### `function Started():Boolean`
 
@@ -154,6 +145,22 @@ in UTF-16.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
  * Returns `RCS_INPUT_NOT_YET_SCANNED` when input port is not yet scanned.
 
+##### `function SetOutput(module, port:Cardinal; state:Integer):Integer`
+
+ * Sets state of output pin `port` on module `module` to state `state`.
+ * Returns 0 by default.
+ * Returns `RCS_NOT_STARTED` when communication with RCS not started.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
+
+Outputs state:
+ * Plain output:
+   - 0: off, 1: on
+   - 60, 120, 180, 240, 320, 600, 33, 66: flickering (ticks per minute)
+ * S-COM: S-COM code
+
 
 ##### `function GetOutput(module, port:Cardinal):Integer`
 
@@ -164,17 +171,6 @@ in UTF-16.
  * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
-
-
-##### `function SetOutput(module, port:Cardinal; state:Integer):Integer`
-
- * Sets state of output pin `port` on module `module` to state `state`.
- * Returns 0 by default.
- * Returns `RCS_NOT_STARTED` when communication with RCS not started.
- * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
- * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
- * Returns `RCS_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
 
 
 ##### `function SetInput(module, port:Cardinal; state:Integer):Integer`
@@ -207,7 +203,7 @@ in UTF-16.
  * Returns 0 by default.
  * Return value:
     - 0 = plain output
-    - 1 = SCom
+    - 1 = S-COM
  * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
@@ -220,20 +216,17 @@ in UTF-16.
    operable now.
  * `IsModule(failed_module) = false`.
 
-
 ##### `function IsModuleFailure(module:Cardinal):Boolean`
 
  * Returns `true` for modules, which are in *failed* state (i. e. modules
    which were discovered, but failed during communication – this could
    happen when modules are cut of a electricity).
 
-
 ##### `function GetModuleCount():Cardinal`
 
  * Returns amount of RCS modules discovered.
  * Returns 0 when bus is not scanned or being scanned.
  * Returns 0 after close.
-
 
 ##### `function GetMaxModuleAddr():Cardinal`
 
@@ -247,7 +240,6 @@ in UTF-16.
  * Returns 0 by default.
  * Returns `RCS_MODULE_INVALID_ADDR` when module does not exist.
 
-
 ##### `function GetModuleName(module:Cardinal; name:PChar; maxNameLen:Cardinal):Integer`
 
  * Puts name of a module `module` into `name`.
@@ -255,14 +247,12 @@ in UTF-16.
  * Returns `RCS_MODULE_INVALID_ADDR` when module address is out of range.
  * `name` should have space for at least 32 bytes.
 
-
 ##### `function GetModuleFW(module:Cardinal; fw:PChar; maxFwLen:Cardinal):Integer`
 
  * Puts firmware version of module `module` into `fw`.
  * Returns 0 by default.
  * Returns `RCS_MODULE_INVALID_ADDR` when module was not found on the bus.
  * `fw` should have space for at least 16 bytes.
-
 
 ##### `function GetModuleInputsCount(module:Cardinal):Cardinal`
 
@@ -275,7 +265,6 @@ in UTF-16.
  * When a library does not provide this function, it is assumed every active
    module has 16 inputs (0-15).
 
-
 ##### `function GetModuleOutputsCount(module:Cardinal):Cardinal`
 
  * Returns number of outputs of module with address `module`.
@@ -286,7 +275,6 @@ in UTF-16.
  * Number of outputs of a module can change during communication.
  * When a library does not provide this function, it is assumed every active
    module has 16 outputs (0-15).
-
 
 ## Library version functions
 
@@ -306,7 +294,6 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Asks library if it supports API version `version`.
  * Return value = if it supports the version or not
 
-
 ##### `function ApiSetVersion(version:Cardinal):Integer`
 
  * Sets the API version.
@@ -314,7 +301,6 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Returns 0 on success.
  * Returns `RCS_UNSUPPORTED_API_VERSION` when tried to set unsupported API
    version.
-
 
 ##### `function GetDeviceVersion(version:PChar; maxVersionLen:Cardinal):Integer`
 
@@ -324,7 +310,6 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Returns 0 by default.
  * Returns `RCS_DEVICE_DISCONNECTED` when not connected to RCS-USB device.
  * `version` should have space for at least 32 bytes.
-
 
 ##### `procedure GetDriverVersion(version:PChar; maxVersionLen:Cardinal)`
 
