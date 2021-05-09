@@ -13,8 +13,8 @@ in UTF-16.
  * Loads library configuration from file `filename`.
  * This function could only be called when device is *closed*.
  * Returns 0 by default.
- * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
- * Returns `MTB_FILE_DEVICE_OPENED` when trying to load configuration with opened
+ * Returns `RCS_FILE_CANNOT_ACCESS` when cannot access configuration file.
+ * Returns `RCS_FILE_DEVICE_OPENED` when trying to load configuration with opened
    device.
  * Old configuration is kept if cannot access file.
  * Filename `filename` is used for future saving of config.
@@ -29,7 +29,7 @@ in UTF-16.
 
  * Saves current library configuration to file `filename`
  * Returns 0 by default.
- * Returns `MTB_FILE_CANNOT_ACCESS` when cannot access configuration file.
+ * Returns `RCS_FILE_CANNOT_ACCESS` when cannot access configuration file.
  * This function could be called at any time.
 
 
@@ -78,17 +78,17 @@ in UTF-16.
  * Function absence = library has no GUI.
 
 
-## MTB open/close start/stop
+## RCS open/close start/stop
 
 ##### `function Open():Integer`
 
- * Opens default MTB device (= MTB device defined in current configuration).
+ * Opens default RCS device (= RCS device defined in current configuration).
  * This function performs `open` and starts scanning modules.
  * Calls `BeforeOpen` event when opening starts.
  * When module scanning is finished, `AfterOpen` event is called.
  * Returns 0 by default.
- * Returns `MTB_ALREADY_OPENNED` when device is already opened.
- * Returns `MTB_CANNOT_OPEN_PORT` whet FT open device was unsuccessful
+ * Returns `RCS_ALREADY_OPENNED` when device is already opened.
+ * Returns `RCS_CANNOT_OPEN_PORT` whet FT open device was unsuccessful
    (more information in log).
 
 
@@ -106,92 +106,92 @@ in UTF-16.
  * `AfterClose` event is called after close. This event is called always (we
    always manage to close device somehow)!
  * Returns 0 by default.
- * Returns `MTB_NOT_OPENED` when device not opened.
- * Returns `MTB_SCANNING_NOT_FINISHED` when trying to while scanning modules.
+ * Returns `RCS_NOT_OPENED` when device not opened.
+ * Returns `RCS_SCANNING_NOT_FINISHED` when trying to while scanning modules.
    Closing is not permitted while scanning modules.
 
 
 ##### `function Opened():Boolean`
 
- * Returns `true` if MTB device is opened, `false` otherwise.
+ * Returns `true` if RCS device is opened, `false` otherwise.
 
 
 ##### `function Start():Integer`
 
- * Starts communication with MTB after opening and module scanning.
+ * Starts communication with RCS after opening and module scanning.
  * This function calls `BeforeStart` after starting begins.
  * `AfterStart` event is called when communication successfully started.
  * `OnScanned` event is called after all the inputs are scanned.
  * Returns 0 by default.
- * Returns `MTB_ALREADY_STARTED` when communication with MTB already started.
- * Returns `MTB_FIRMWARE_TOO_LOW` when MTB-USB firmware is lower than 0.9.20.
+ * Returns `RCS_ALREADY_STARTED` when communication with RCS already started.
+ * Returns `RCS_FIRMWARE_TOO_LOW` when RCS-USB firmware is lower than 0.9.20.
    In this case, upgrade is required and Start fails.
- * Returns `MTB_NO_MODULES` when no modules were found. In this case,
+ * Returns `RCS_NO_MODULES` when no modules were found. In this case,
    Start function fails.
- * Returns `MTB_NOT_OPENED` when trying to start before module
+ * Returns `RCS_NOT_OPENED` when trying to start before module
    scanning is finished. Start function fails.
- * Returns `MTB_SCANNING_NOT_FINISHED` when initial scanning of inputs of all
+ * Returns `RCS_SCANNING_NOT_FINISHED` when initial scanning of inputs of all
    modules is not finished yet.
 
 
 ##### `function Stop():Integer`
 
- * Stops MTB communication after successfully starting it.
+ * Stops RCS communication after successfully starting it.
  * This function calls `BeforeStop` after stopping begins.
- * `AfterStop` is called after after communication with MTB is stopped.
+ * `AfterStop` is called after after communication with RCS is stopped.
    This event is called always.
  * Returns 0 by default.
- * Returns `MTB_NOT_STARTED` when trying to stop non-existing communication.
+ * Returns `RCS_NOT_STARTED` when trying to stop non-existing communication.
 
 
 ##### `function Started():Boolean`
 
- * Returns `true` if MTB communication is enabled, `false` otherwise.
+ * Returns `true` if RCS communication is enabled, `false` otherwise.
 
 
-## MTB IO functions
+## RCS IO functions
 
 ##### `function GetInput(module, port:Cardinal):Integer`
 
- * This function returns input state of port `port` on mtb module `module`.
+ * This function returns input state of port `port` on RCS module `module`.
  * Returns 0/1 by default.
- * Returns `MTB_NOT_STARTED` when communication with MTB not started.
- * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
- * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
- * Returns `MTB_INPUT_NOT_YET_SCANNED` when input port is not yet scanned.
+ * Returns `RCS_NOT_STARTED` when communication with RCS not started.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_INPUT_NOT_YET_SCANNED` when input port is not yet scanned.
 
 
 ##### `function GetOutput(module, port:Cardinal):Integer`
 
  * Returns state of output pin `port` on module `module`.
- * Returns 0-255 by default (higher numbers for scom), 0-1 for MTB-UNI and
-   MTB-TTL.
- * Returns `MTB_NOT_STARTED` when communication with MTB not started.
- * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
- * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns 0-255 by default (higher numbers for scom), 0-1 for RCS-UNI and
+   RCS-TTL.
+ * Returns `RCS_NOT_STARTED` when communication with RCS not started.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 
 ##### `function SetOutput(module, port:Cardinal; state:Integer):Integer`
 
  * Sets state of output pin `port` on module `module` to state `state`.
  * Returns 0 by default.
- * Returns `MTB_NOT_STARTED` when communication with MTB not started.
- * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
- * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
- * Returns `MTB_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
+ * Returns `RCS_NOT_STARTED` when communication with RCS not started.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
 
 
 ##### `function SetInput(module, port:Cardinal; state:Integer):Integer`
 
  * Allows to simulate chage of states of inputs.
  * Returns 0 by default.
- * Returns `MTB_NOT_STARTED` when communication with MTB not started.
- * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
- * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_NOT_STARTED` when communication with RCS not started.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 ##### `function IsSimulation():Boolean`
 
@@ -200,44 +200,44 @@ in UTF-16.
 
 ##### `function GetInputType(module, port:Cardinal):Integer`
 
- * This function returns type of inpput of port `port` on mtb module `module`.
+ * This function returns type of inpput of port `port` on RCS module `module`.
  * Returns 0 by default.
  * Return value:
     - 0 = plain input
     - 1 = IR
- * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 ##### `function GetOutputType(module, port:Cardinal):Integer`
 
- * This function returns type of output of port `port` on mtb module `module`.
+ * This function returns type of output of port `port` on RCS module `module`.
  * Returns 0 by default.
  * Return value:
     - 0 = plain output
     - 1 = SCom
- * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
- * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 
-## MTB-USB board
+## RCS-USB board
 
 ##### `function GetDeviceCount():Integer`
 
- * Returns amount of connected MTB-USB boards.
+ * Returns amount of connected RCS-USB boards.
 
 
 ##### `procedure GetDeviceSerial(index:Integer, serial:PChar, maxSerialLen:Cardinal)`
 
- * Returns serial name of MTB-USB device at index `index` into `serial`.
+ * Returns serial name of RCS-USB device at index `index` into `serial`.
  * When invalid index is passed, empty string is returned.
  * `serial` should have space for at least 32 bytes.
 
 
-## MTB modules
+## RCS modules
 
 ##### `function IsModule(module:Cardinal):Boolean`
 
- * Returns `true` if and only if mtb module with address `module` is fully
+ * Returns `true` if and only if RCS module with address `module` is fully
    operable now.
  * `IsModule(failed_module) = false`.
 
@@ -251,7 +251,7 @@ in UTF-16.
 
 ##### `function GetModuleCount():Cardinal`
 
- * Returns amount of MTB modules discovered.
+ * Returns amount of RCS modules discovered.
  * Returns 0 when bus is not scanned or being scanned.
  * Returns 0 after close.
 
@@ -266,14 +266,14 @@ in UTF-16.
 
  * Returns type of a module with address `module` as string into `type`.
  * Returns 0 by default.
- * Returns `MTB_MODULE_INVALID_ADDR` when module does not exist.
+ * Returns `RCS_MODULE_INVALID_ADDR` when module does not exist.
 
 
 ##### `function GetModuleName(module:Cardinal; name:PChar; maxNameLen:Cardinal):Integer`
 
  * Puts name of a module `module` into `name`.
  * Returns 0 by default.
- * Returns `MTB_MODULE_INVALID_ADDR` when module address is out of range.
+ * Returns `RCS_MODULE_INVALID_ADDR` when module address is out of range.
  * `name` should have space for at least 32 bytes.
 
 
@@ -281,7 +281,7 @@ in UTF-16.
 
  * Puts firmware version of module `module` into `fw`.
  * Returns 0 by default.
- * Returns `MTB_MODULE_INVALID_ADDR` when module was not found on the bus.
+ * Returns `RCS_MODULE_INVALID_ADDR` when module was not found on the bus.
  * `fw` should have space for at least 16 bytes.
 
 
@@ -291,7 +291,7 @@ in UTF-16.
  * If module does not exist, returns expected number of inputs of module
    with address `module`.
  * Result value can range in `0-15`, other values are forbidden!
- * Returns `MTB_MODULE_INVALID_ADDR` iff `module > GetMaxModuleAddr()`.
+ * Returns `RCS_MODULE_INVALID_ADDR` iff `module > GetMaxModuleAddr()`.
  * Number of inputs of a module can change during communication.
  * When a library does not provide this function, it is assumed every active
    module has 16 inputs (0-15).
@@ -303,7 +303,7 @@ in UTF-16.
  * If module does not exist, returns expected number of outputs of module
    with address `module`.
  * Result value can range in `0-15`, other values are forbidden!
- * Returns `MTB_MODULE_INVALID_ADDR` iff `module > GetMaxModuleAddr()`.
+ * Returns `RCS_MODULE_INVALID_ADDR` iff `module > GetMaxModuleAddr()`.
  * Number of outputs of a module can change during communication.
  * When a library does not provide this function, it is assumed every active
    module has 16 outputs (0-15).
@@ -333,23 +333,23 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Sets the API version.
  * Should be called at least once at the beginning.
  * Returns 0 on success.
- * Returns `MTB_UNSUPPORTED_API_VERSION` when tried to set unsupported API
+ * Returns `RCS_UNSUPPORTED_API_VERSION` when tried to set unsupported API
    version.
 
 
 ##### `function GetDeviceVersion(version:PChar; maxVersionLen:Cardinal):Integer`
 
- * Puts version of MTB-USB device into `version`.
- * Library must be connected to MTB-USB device to make this information
+ * Puts version of RCS-USB device into `version`.
+ * Library must be connected to RCS-USB device to make this information
    available.
  * Returns 0 by default.
- * Returns `MTB_DEVICE_DISCONNECTED` when not connected to MTB-USB device.
+ * Returns `RCS_DEVICE_DISCONNECTED` when not connected to RCS-USB device.
  * `version` should have space for at least 32 bytes.
 
 
 ##### `procedure GetDriverVersion(version:PChar; maxVersionLen:Cardinal)`
 
- * Puts version of MTB driver into `version`.
+ * Puts version of RCS driver into `version`.
  * `version` should have space for at least 32 bytes.
 
 
