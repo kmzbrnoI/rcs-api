@@ -92,13 +92,6 @@ in UTF-16.
    (more information in log).
 
 
-##### `function OpenDevice(device:PChar; persist:boolean):Integer`
-
- * Opens device `device`.
- * When `persist` is `true`, device name is saved to configuration.
- * Similar to `Open()`.
-
-
 ##### `function Close():Integer`
 
  * Closes opened device.
