@@ -36,7 +36,7 @@ in UTF-16.
 ##### `procedure SetConfigFileName(filename:PChar)`
 
  * Sets filename for next config saving.
- * This function is compulsory, it is not required.
+ * This function is not compulsory.
 
 
 ## Logging
@@ -183,6 +183,20 @@ in UTF-16.
  * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
  * Returns `MTB_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
 
+
+##### `function SetInput(module, port:Cardinal; state:Integer):Integer`
+
+ * Allows to simulate chage of states of inputs.
+ * Returns 0 by default.
+ * Returns `MTB_NOT_STARTED` when communication with MTB not started.
+ * Returns `MTB_MODULE_INVALID_ADDR` when `module` is not available on bus.
+ * Returns `MTB_MODULE_FAILED` when `module` was available, but got offline.
+ * Returns `MTB_PORT_INVALID_NUMBER` when port number is out of bounds.
+
+##### `function IsSimulation():Boolean`
+
+ * Returns if this library supports SetInput.
+ * This function is not compulsory.
 
 ##### `function GetInputType(module, port:Cardinal):Integer`
 
