@@ -3,6 +3,12 @@ RCS API Changelog
 
 Whole version history is available in git history of this repository (see tags).
 
+## v1.4
+
+ * Remove `GetDeviceCount`, `GetDeviceSerial`, `OpenDevice` functions.
+ * Add `IsSimulation`, `SetInput` as optional.
+ * Add flickering.
+
 ## v1.3
 
  * Add API version functions & workflow.
