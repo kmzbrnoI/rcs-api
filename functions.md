@@ -1,4 +1,4 @@
-RCS API v1.3 Functions Specification
+RCS API v1.4 Functions Specification
 ====================================
 
 All functions and procedures are called by `stdcall`.
@@ -217,20 +217,6 @@ in UTF-16.
     - 1 = SCom
  * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
-
-
-## RCS-USB board
-
-##### `function GetDeviceCount():Integer`
-
- * Returns amount of connected RCS-USB boards.
-
-
-##### `procedure GetDeviceSerial(index:Integer, serial:PChar, maxSerialLen:Cardinal)`
-
- * Returns serial name of RCS-USB device at index `index` into `serial`.
- * When invalid index is passed, empty string is returned.
- * `serial` should have space for at least 32 bytes.
 
 
 ## RCS modules

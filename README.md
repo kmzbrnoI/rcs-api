@@ -1,4 +1,4 @@
-RCS API v1.3 Specification
+RCS API v1.4 Specification
 ==========================
 
 This document describes a specification of *Railroad Control System* Interface
