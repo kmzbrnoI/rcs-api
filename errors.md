@@ -23,4 +23,6 @@ constexpr size_t RCS_NOT_STARTED = 2031;
 
 constexpr size_t RCS_MODULE_FAILED = 3141;
 constexpr size_t RCS_MODULE_RESTORED = 3142;
+
+constexpr size_t RCS_UNSUPPORTED_API_VERSION = 4000;
 ```
