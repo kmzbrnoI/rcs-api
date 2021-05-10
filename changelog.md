@@ -8,6 +8,7 @@ Whole version history is available in git history of this repository (see tags).
  * Remove `GetDeviceCount`, `GetDeviceSerial`, `OpenDevice` functions.
  * Add `IsSimulation`, `SetInput` as optional.
  * Add flickering.
+ * Remove unused error codes.
 
 ## v1.3
 

@@ -112,8 +112,6 @@ in UTF-16.
  * Returns `RCS_ALREADY_STARTED` when communication with RCS already started.
  * Returns `RCS_FIRMWARE_TOO_LOW` when RCS-USB firmware is lower than 0.9.20.
    In this case, upgrade is required and Start fails.
- * Returns `RCS_NO_MODULES` when no modules were found. In this case,
-   Start function fails.
  * Returns `RCS_NOT_OPENED` when trying to start before module
    scanning is finished. Start function fails.
  * Returns `RCS_SCANNING_NOT_FINISHED` when initial scanning of inputs of all
@@ -153,7 +151,7 @@ in UTF-16.
  * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
- * Returns `RCS_INVALID_SCOM_CODE` when scom code is not in 0 to 15.
+ * Returns `RCS_PORT_INVALID_VALUE` when `state` is not of allowed value.
 
 Outputs state:
  * Plain output:
@@ -181,6 +179,7 @@ Outputs state:
  * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `RCS_MODULE_FAILED` when `module` was available, but got offline.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
+ * Returns `RCS_PORT_INVALID_VALUE` when `state` is not of allowed value.
 
 ##### `function IsSimulation():Boolean`
 
