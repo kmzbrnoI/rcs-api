@@ -156,7 +156,7 @@ in UTF-16.
 Outputs state:
  * Plain output:
    - 0: off, 1: on
-   - 60, 120, 180, 240, 320, 600, 33, 66: flickering (ticks per minute)
+   - 60, 120, 180, 240, 300, 600, 33, 66: flickering (ticks per minute)
  * S-COM: S-COM code
 
 
