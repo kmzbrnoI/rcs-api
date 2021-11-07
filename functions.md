@@ -275,6 +275,17 @@ Outputs state:
  * When a library does not provide this function, it is assumed every active
    module has 16 outputs (0-15).
 
+##### `function IsModuleError(module:Cardinal):Boolean`
+
+ * Returns `true` for modules, which reported that they are in *error* state.
+ * Returns `false` for non-existing module.
+
+##### `function IsModuleWarning(module:Cardinal):Boolean`
+
+ * Returns `true` for modules, which reported that they are in *warning* state.
+ * Returns `false` for non-existing module.
+
+
 ## Library version functions
 
 API version is `Cardinal` (`unsigned int`) with LSB meaning the major version
