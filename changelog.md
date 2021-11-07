@@ -3,6 +3,9 @@ RCS API Changelog
 
 Whole version history is available in git history of this repository (see tags).
 
+## v1.5
+
+
 ## v1.4
 
  * Remove `GetDeviceCount`, `GetDeviceSerial`, `OpenDevice` functions.

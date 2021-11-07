@@ -1,4 +1,4 @@
-RCS API v1.4 Functions Specification
+RCS API v1.5 Functions Specification
 ====================================
 
 All functions and procedures are called by `stdcall`.
@@ -346,6 +346,23 @@ TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: Cardin
 ##### `procedure BindOnLog(event:TStdLogEvent; data:Pointer)`
 
 ##### `procedure BindOnInputChanged(event:TStdModuleChangeEvent; data:Pointer)`
+
+ * `OnInputChanged` event is called when module inputs change.
+ * Also called when module lost / restored (because inputs change).
+
 ##### `procedure BindOnOutputChanged(event:TStdModuleChangeEvent; data:Pointer)`
 
+ * `OnOutputChanged` event is called when module outputs change.
+ * Also called when module lost / restored (because outputs change).
+
+##### `procedure BindOnModuleChanged(event:TStdModuleChangeEvent; data:Pointer)`
+
+ * `OnModuleChanged` event is called when module general information is changed
+   (e.g. name, n.o. inputs/outputs etc.).
+ * Also called when module lost / restored.
+ * This event could be called during normal RCS operation (RCS active).
+
 ##### `procedure BindOnScanned(event:TStdNotifyEvent; data:Pointer)`
+
+ * This event is called after calling `Start()` when state of all inputs is
+   loaded.
