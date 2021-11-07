@@ -5,6 +5,8 @@ Whole version history is available in git history of this repository (see tags).
 
 ## v1.5
 
+ * Add `OnModuleChanged` event.
+ * Add `IsModuleError`, `IsModuleWarning`.
 
 ## v1.4
 
