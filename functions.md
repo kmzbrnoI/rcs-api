@@ -8,7 +8,7 @@ in UTF-16.
 
 ## Configuration files
 
-##### `function LoadConfig(filename:PChar):Integer`
+##### `function LoadConfig(filename:PChar):NativeInt`
 
  * Loads library configuration from file `filename`.
  * This function could only be called when device is *closed*.
@@ -24,7 +24,7 @@ in UTF-16.
    in most cases there would be no config file. The responsibility for setting
    the config files location is not caller.
 
-##### `function SaveConfig(filename:PChar):Integer`
+##### `function SaveConfig(filename:PChar):NativeInt`
 
  * Saves current library configuration to file `filename`
  * Returns 0 by default.
@@ -39,7 +39,7 @@ in UTF-16.
 
 ## Logging
 
-##### `procedure SetLogLevel(loglevel:Cardinal)`
+##### `procedure SetLogLevel(loglevel:NativeUInt)`
 
  * Sets event-logging loglevel.
  * Loglevels:
@@ -54,7 +54,7 @@ in UTF-16.
 6 - debug
 ```
 
-##### `function GetLogLevel():Cardinal`
+##### `function GetLogLevel():NativeUInt`
 
  * Returns loglevel.
 
@@ -76,7 +76,7 @@ in UTF-16.
 
 ## RCS open/close start/stop
 
-##### `function Open():Integer`
+##### `function Open():NativeInt`
 
  * Opens default RCS device (= RCS device defined in current configuration).
  * This function performs `open` and starts scanning modules.
@@ -87,7 +87,7 @@ in UTF-16.
  * Returns `RCS_CANNOT_OPEN_PORT` whet FT open device was unsuccessful
    (more information in log).
 
-##### `function Close():Integer`
+##### `function Close():NativeInt`
 
  * Closes opened device.
  * Calls `BeforeClose` event when closing starts.
@@ -102,7 +102,7 @@ in UTF-16.
 
  * Returns `true` if RCS device is opened, `false` otherwise.
 
-##### `function Start():Integer`
+##### `function Start():NativeInt`
 
  * Starts communication with RCS after opening and module scanning.
  * This function calls `BeforeStart` after starting begins.
@@ -117,7 +117,7 @@ in UTF-16.
  * Returns `RCS_SCANNING_NOT_FINISHED` when initial scanning of inputs of all
    modules is not finished yet.
 
-##### `function Stop():Integer`
+##### `function Stop():NativeInt`
 
  * Stops RCS communication after successfully starting it.
  * This function calls `BeforeStop` after stopping begins.
@@ -133,7 +133,7 @@ in UTF-16.
 
 ## RCS IO functions
 
-##### `function GetInput(module, port:Cardinal):Integer`
+##### `function GetInput(module, port:NativeUInt):NativeInt`
 
  * This function returns input state of port `port` on RCS module `module`.
  * Returns 0/1 by default.
@@ -143,7 +143,7 @@ in UTF-16.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
  * Returns `RCS_INPUT_NOT_YET_SCANNED` when input port is not yet scanned.
 
-##### `function SetOutput(module, port:Cardinal; state:Integer):Integer`
+##### `function SetOutput(module, port:NativeUInt; state:NativeInt):NativeInt`
 
  * Sets state of output pin `port` on module `module` to state `state`.
  * Returns 0 by default.
@@ -160,7 +160,7 @@ Outputs state:
  * S-COM: S-COM code
 
 
-##### `function GetOutput(module, port:Cardinal):Integer`
+##### `function GetOutput(module, port:NativeUInt):NativeInt`
 
  * Returns state of output pin `port` on module `module`.
  * Returns 0-255 by default (higher numbers for scom), 0-1 for RCS-UNI and
@@ -171,7 +171,7 @@ Outputs state:
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
 
-##### `function SetInput(module, port:Cardinal; state:Integer):Integer`
+##### `function SetInput(module, port:NativeUInt; state:NativeInt):NativeInt`
 
  * Allows to simulate chage of states of inputs.
  * Returns 0 by default.
@@ -186,7 +186,7 @@ Outputs state:
  * Returns if this library supports SetInput.
  * This function is not compulsory.
 
-##### `function GetInputType(module, port:Cardinal):Integer`
+##### `function GetInputType(module, port:NativeUInt):NativeInt`
 
  * This function returns type of inpput of port `port` on RCS module `module`.
  * Returns 0 by default.
@@ -196,7 +196,7 @@ Outputs state:
  * Returns `RCS_MODULE_INVALID_ADDR` when `module` is not available on bus.
  * Returns `RCS_PORT_INVALID_NUMBER` when port number is out of bounds.
 
-##### `function GetOutputType(module, port:Cardinal):Integer`
+##### `function GetOutputType(module, port:NativeUInt):NativeInt`
 
  * This function returns type of output of port `port` on RCS module `module`.
  * Returns 0 by default.
@@ -209,51 +209,51 @@ Outputs state:
 
 ## RCS modules
 
-##### `function IsModule(module:Cardinal):Boolean`
+##### `function IsModule(module:NativeUInt):Boolean`
 
  * Returns `true` if and only if RCS module with address `module` is fully
    operable now.
  * `IsModule(failed_module) = false`.
 
-##### `function IsModuleFailure(module:Cardinal):Boolean`
+##### `function IsModuleFailure(module:NativeUInt):Boolean`
 
  * Returns `true` for modules, which are in *failed* state (i. e. modules
    which were discovered, but failed during communication – this could
    happen when modules are cut of a electricity).
 
-##### `function GetModuleCount():Cardinal`
+##### `function GetModuleCount():NativeUInt`
 
  * Returns amount of RCS modules discovered.
  * Returns 0 when bus is not scanned or being scanned.
  * Returns 0 after close.
 
-##### `function GetMaxModuleAddr():Cardinal`
+##### `function GetMaxModuleAddr():NativeUInt`
 
  * Returns highest possible module address.
  * Return value of this function should keep constant for whole lifetime of
    the library.
 
-##### `function GetModuleTypeStr(module:Cardinal; type:PChar; maxTypeLen:Cardinal):Integer`
+##### `function GetModuleTypeStr(module:NativeUInt; type:PChar; maxTypeLen:NativeUInt):NativeInt`
 
  * Returns type of a module with address `module` as string into `type`.
  * Returns 0 by default.
  * Returns `RCS_MODULE_INVALID_ADDR` when module does not exist.
 
-##### `function GetModuleName(module:Cardinal; name:PChar; maxNameLen:Cardinal):Integer`
+##### `function GetModuleName(module:NativeUInt; name:PChar; maxNameLen:NativeUInt):NativeInt`
 
  * Puts name of a module `module` into `name`.
  * Returns 0 by default.
  * Returns `RCS_MODULE_INVALID_ADDR` when module address is out of range.
  * `name` should have space for at least 32 bytes.
 
-##### `function GetModuleFW(module:Cardinal; fw:PChar; maxFwLen:Cardinal):Integer`
+##### `function GetModuleFW(module:NativeUInt; fw:PChar; maxFwLen:NativeUInt):NativeInt`
 
  * Puts firmware version of module `module` into `fw`.
  * Returns 0 by default.
  * Returns `RCS_MODULE_INVALID_ADDR` when module was not found on the bus.
  * `fw` should have space for at least 16 bytes.
 
-##### `function GetModuleInputsCount(module:Cardinal):Cardinal`
+##### `function GetModuleInputsCount(module:NativeUInt):NativeUInt`
 
  * Returns number of inputs of module with address `module`.
  * If module does not exist, returns expected number of inputs of module
@@ -264,7 +264,7 @@ Outputs state:
  * When a library does not provide this function, it is assumed every active
    module has 16 inputs (0-15).
 
-##### `function GetModuleOutputsCount(module:Cardinal):Cardinal`
+##### `function GetModuleOutputsCount(module:NativeUInt):NativeUInt`
 
  * Returns number of outputs of module with address `module`.
  * If module does not exist, returns expected number of outputs of module
@@ -275,12 +275,12 @@ Outputs state:
  * When a library does not provide this function, it is assumed every active
    module has 16 outputs (0-15).
 
-##### `function IsModuleError(module:Cardinal):Boolean`
+##### `function IsModuleError(module:NativeUInt):Boolean`
 
  * Returns `true` for modules, which reported that they are in *error* state.
  * Returns `false` for non-existing module.
 
-##### `function IsModuleWarning(module:Cardinal):Boolean`
+##### `function IsModuleWarning(module:NativeUInt):Boolean`
 
  * Returns `true` for modules, which reported that they are in *warning* state.
  * Returns `false` for non-existing module.
@@ -288,7 +288,7 @@ Outputs state:
 
 ## Library version functions
 
-API version is `Cardinal` (`unsigned int`) with LSB meaning the major version
+API version is `NativeUInt` (`unsigned int`) with LSB meaning the major version
 and seconds LSB meaning minor version. The rest of bytes is 0.
 
 Library may support multiple version of API and caller may support multiple
@@ -299,12 +299,12 @@ call `ApiSetVersion` so the library knows the intended version of API too.
 These functions should be the first functions caller calls in the library.
 When these functions are not implemented, `v1.2` of library is assumed.
 
-##### `function ApiSupportsVersion(version:Cardinal):Boolean`
+##### `function ApiSupportsVersion(version:NativeUInt):Boolean`
 
  * Asks library if it supports API version `version`.
  * Return value = if it supports the version or not
 
-##### `function ApiSetVersion(version:Cardinal):Integer`
+##### `function ApiSetVersion(version:NativeUInt):NativeInt`
 
  * Sets the API version.
  * Should be called at least once at the beginning.
@@ -312,7 +312,7 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Returns `RCS_UNSUPPORTED_API_VERSION` when tried to set unsupported API
    version.
 
-##### `function GetDeviceVersion(version:PChar; maxVersionLen:Cardinal):Integer`
+##### `function GetDeviceVersion(version:PChar; maxVersionLen:NativeUInt):NativeInt`
 
  * Puts version of RCS-USB device into `version`.
  * Library must be connected to RCS-USB device to make this information
@@ -321,7 +321,7 @@ When these functions are not implemented, `v1.2` of library is assumed.
  * Returns `RCS_DEVICE_DISCONNECTED` when not connected to RCS-USB device.
  * `version` should have space for at least 32 bytes.
 
-##### `procedure GetDriverVersion(version:PChar; maxVersionLen:Cardinal)`
+##### `procedure GetDriverVersion(version:PChar; maxVersionLen:NativeUInt)`
 
  * Puts version of RCS driver into `version`.
  * `version` should have space for at least 32 bytes.
@@ -338,9 +338,9 @@ When these functions are not implemented, `v1.2` of library is assumed.
 
 ```pascal
 TStdNotifyEvent = procedure (Sender: TObject; data:Pointer); stdcall;
-TStdLogEvent = procedure (Sender: TObject; data:Pointer; logLevel:Integer; msg:PChar); stdcall;
-TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: Word; errAddr: Cardinal; errMsg:PChar); stdcall;
-TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: Cardinal); stdcall;
+TStdLogEvent = procedure (Sender: TObject; data:Pointer; logLevel:NativeInt; msg:PChar); stdcall;
+TStdErrorEvent = procedure (Sender: TObject; data:Pointer; errValue: Word; errAddr: NativeUInt; errMsg:PChar); stdcall;
+TStdModuleChangeEvent = procedure (Sender: TObject; data:Pointer; module: NativeUInt); stdcall;
 ```
 
 ##### `procedure BindBeforeOpen(event:TStdNotifyEvent; data:Pointer)`
